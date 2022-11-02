@@ -87,7 +87,7 @@ async def create_new_user(create_user: CreateUser, db: Session = Depends(get_db)
 
 
 @app.post("/token")
-async def login_for_access_token(form_date :OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+async def login_for_access_token(form_date: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = authenticate_user(form_date.username, form_date.password, db)
     if not user:
         raise token_exception()
